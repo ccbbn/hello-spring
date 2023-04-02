@@ -15,7 +15,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@Transactional // 테스트할 때 쓴 데이터를 끝나고 날려버림, test를 계속 반복할 수 있음
+@Transactional // 테스트할 때 쓴 데이터를 끝나고 날려버림, test를 계속 반복할 수 있음/ 테스트케이스 전용
 class MemberServiceIntegrationTest {
     // 일반 저장
 //    MemberService memberService;

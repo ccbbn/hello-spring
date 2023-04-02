@@ -4,6 +4,7 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,7 @@ import java.util.Optional;
 // 클래스에 컨트롤 + 쉬프트 +  T : 테스트 케이스 만듦
 
 //@Service  // 스프링컨테이너에 맴버서비스를 등록함
+@Transactional // jpa사용시 필요함
 public class MemberService {
     private final MemberRepository memberRepository;
 
