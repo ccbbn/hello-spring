@@ -1,32 +1,42 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class MemberServiceTest {
+@SpringBootTest
+@Transactional // 테스트할 때 쓴 데이터를 끝나고 날려버림, test를 계속 반복할 수 있음
+class MemberServiceIntegrationTest {
+    // 일반 저장
+//    MemberService memberService;
+//    MemoryMemberRepository memberRepository;
+//
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+//    @BeforeEach // DI작업,
+//    public void beforeEach() {
+//        memberRepository = new MemoryMemberRepository();
+//        memberService = new MemberService(memberRepository);
+//    }
+//@AfterEach
+//public void afterEach() {
+//    memberRepository.clearStore();
+//}
+
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
 
-    @BeforeEach // DI작업,
-    public void beforeEach() {
-        memberRepository = new MemoryMemberRepository();
-        memberService = new MemberService(memberRepository);
-    }
 
-
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
 
     @Test
     void 회원가입() {
@@ -63,11 +73,4 @@ class MemberServiceTest {
 //        }
     }
 
-    @Test
-    void findMembers() {
-    }
-
-    @Test
-    void findOne() {
-    }
 }
